@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="parent">
+    <div id="target">
+      自分
+    </div>
+  </div>
+  <div id="divList">
+    <div class="div1">テスト１</div>
+    <div class="div2">テスト２</div>
+    <div class="div3">テスト３</div>
+  </div>
+
+
+
+  <script>
+const target = document.getElementById('target');
+const newDiv = document.createElement('div');
+
+newDiv.id= 'test';
+newDiv.classList.add('red');
+newDiv.textContent = 'テスト';
+target.appendChild(newDiv); //targetクラス内追加される
+target.parentNode.appendChild(newDiv); //targetクラスの同じ位置で追加される
+
+
+const targetList = document.getElementById('divList');
+const reference = document.querySelector('div2');
+const newElement =document.createElement('div');
+
+newElement.classList.add('div4');
+newElement.textContent = 'add';
+targetList.insertBefore(newElement, reference);//引数１に追加したdivタグ　引数２に追加するdiv位置　div2の上に新たな　divタグが追加される
+
+//querySelectorAll 指定した全てのクラスを取得
+//nextElementSibling 指定したクラスの次のクラスを取得　　siblingは兄弟という意味
+//firstElementChild 最初の子要素を取得　last　最後の子要素を取得
+//firstChild lastChild　node要素を取得する
+
+
+  </script>
+</body>
+</html>
