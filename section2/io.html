@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IO</title>
+</head>
+<body>
+  <div class="h300 blue"></div>
+  <div class="h300 pink"></div>
+  <div class="h300 blue relative">
+    <div class="message-box ">aaa</div>
+  </div>
+  <div class="h300 pink"></div>
+  <div class="h300 blue relative">
+    <div class="message-box ">iii</div>
+  </div>
+  <div class="h300 pink"></div>
+  <script>
+
+  const option = {
+    threshold:0.5,
+    rootMargin: '-200px'
+  }
+
+   const observer = new IntersectionObserver(callback, options);
+
+   const target = document.querySelectorAll('.message-box');
+   
+   targets.forEach(target => observer.observe(target));
+
+   function callback(entries){
+     entries.forEach(entry => {
+       console.log(entry);
+       if(entry.isIntersection){
+         entry.target.classList.add('show');
+       }
+     });
+   }
+  </script>
+</body>
+</html>

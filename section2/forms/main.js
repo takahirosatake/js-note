@@ -24,13 +24,14 @@ formTestYourName.addEventListener('input',()=>{
 const preview = document.forms.form_test1.preview;
 
 document.forms.form_test1.image_file.addEventListener('change', e =>{
+//change 変わった時イベント発生
 //  console.log(e.target.files[0]);
   const uploadFile = e.target.files[0];
 
   //表示 FileReader
   const reader = new FileReader();
   reader.addEventListener('load',()=>{
-    preview.src = reader.result; //Base64
+    preview.src = reader.result; //Base64英数字記号合計64文字でimageデータ表すresult
     console.log(preview.src);
   });
   reader.readAsDataURL(uploadFile);
