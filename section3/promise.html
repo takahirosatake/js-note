@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    //function test1(){
+    //  return '関数1';
+    //}
+
+
+    //const test1 = () => {return '//関数1'};
+    //
+    //console.log(test1());
+
+
+    //promise
+    // 1 状態（OK/NG）と値
+    // 2　Promiseチェック
+    //callback
+    function promiseTest1(){ //インプットなし
+      return new Promise( ok => {
+        //何かしらの処理
+        ok('プロミス１です');
+
+      });
+    };
+
+    console.log(promiseTest1());
+
+    const promiseTest2 = new Promise( ok => {
+      ok('プロミス２です');
+    });
+
+    console.log(promiseTest2);
+
+    function testpromise3(input){
+      return new Promise(ok => {
+        ok(`プロミス${input}です`);
+      })
+    };
+
+    console.log(testpromise3('3'));
+
+    //promiseチェーン
+    //promise .then(ok_callback, ng_callback)
+    //promise .then((ok_value) => {}, (ng_callback) => {})
+    //promise .catch(ng_callback) ngはcatch 
+    //promise .catch((ng_reason) => {}) //NGhはcatch 
+    
+
+
+    //ngもついか
+    // new Promise((ok , ng) => {})
+
+    function promiseTest4(pay){
+      return new Promise((ok, ng) => {
+        if(pay > 100) {
+          let change = pay - 100;
+          ok(change);
+        } else {
+          ng('お金がありません');
+        }
+      });
+    }
+
+    console.log(promiseTest4(80)).catch( e=> {console.log(e)});
+
+
+
+    promiseTest4(180).then(change1=> {
+      console.log(change1); //この時点でchange1 = 100
+      return promisetest4(change1);//Promiseでラップ ok(value) 再度promisetest4のメソッドを実行することができる change1 => 80
+    }).then(change2 =>{ //change2 = 80
+      console.log(change2);
+    }).catch(e => console.log(e));//80円で足りないのでエラー処理
+
+
+
+    // サーバーとのやりとりなど時間がかかる処理　かかる時間がわからない。
+    //通信速度。サーバーふか処理に時間がかかったり
+    //new Promise((ok,ng) =>{})
+    //setTimeout 
+
+    console.log(1);
+    promiseTest5(300, 2).then(change1 => promiseTest5(change1, 3)).then(change2 => promiseTest5(change2, 2)).catch(e => console.log(e));
+    console.log(3);
+    //同期的上から処理するがPromiseは非同期なので、処理もバラバラになる
+    function promiseTest5(pay, seconds) {
+      return new Promise((ok, ng)=> {
+        setTimeout(() => {
+          if(pay > 100){
+            let change = pay - 100;
+            console.log(`${seconds}秒、お釣りは${change}です`);
+            ok(change);
+          }
+          ng('お金がありません');
+        }, seconds * 1000)
+      })
+    }
+
+  </script>
+</body>
+</html>

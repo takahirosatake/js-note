@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    //throw 'エラーです';
+    //const err = new Error();
+    //err.message = "エラーです";
+    //throw err;
+    
+    function getMonthName (month) {
+      month = month -1;
+      const months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+    }
+    if(months[month] != null){
+      return months[month];
+    } else {
+      const err = new Error();
+      err.message = 'エラーです';
+      throw err;
+    }
+
+    try {
+      monthName = getMonthName(13);//関数は例外処理を投げることがある 
+    } 
+    catch(e){
+      console.log(e);//例外オブジェクトをエラー処理部分に渡す。
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    //async
+    //戻り値　Promise (状態(ok/ng), それぞれの値)
+    //return .. OK
+    //throw .. NG
+
+    async function aTest(){
+      return '非同期関数１'
+    }
+
+    //asyncはthenでチェーンをそのまま作れる
+    console.log(atest1().then(value => console.log(value)));
+
+    //await ・・asyncの中でのみ
+    //setTimuout を　Promiseでラップ
+
+    function waiting(seconds){
+      return new Promise(ok => {
+        setTimeout(() => {
+           ok()
+        },1000 * seconds)
+      })
+    };
+
+    async function aTest2(){
+      console.log(1);
+      await waiting(2);//awaitをつけることでasync関数の中で実行することができる
+      console.log(3);
+    }
+
+    aTest2();
+
+  </script>
+</body>
+</html>
