@@ -20,7 +20,10 @@ const scores = [10,20,30,40];
 
 // const newScore = scores.filter((value) => {return value >= 30;
 // });
-const newScore = scores.filter((value) => value >= 30);
+const newScore = scores.filter((value) => {
+  setTimeout(() => {
+    return value >= 30});
+}, 1000)
 
 console.log(newScore)
 
