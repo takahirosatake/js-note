@@ -20,7 +20,7 @@
 <script>
  
   const url = 'https://dog.ceo/api/breeds/image/random'
-  // 短期間のアクセス集中NG１２秒は間隔を空けてください。
+  // 短期間のアクセス集中NG１２秒は間隔を開ける。
 
   const option =  {
     method: 'GET'
@@ -29,7 +29,7 @@
   //const fetchtest = fetch//(url, option);
   //console.log(fetchtest);
 
-  // 返り血はPromise
+  // 返り値はPromise
   // この状態では中身が確認できない。
   
   // APIがJsonで取得できるならresponse.json()でパースするparseでjsonをオブジェクト形式に変換し使えるようにする
